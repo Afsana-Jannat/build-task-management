@@ -1,0 +1,32 @@
+  [
+    {
+    "title": "Complete Project Proposal",
+    "description": "Draft a comprehensive project proposal including objectives, scope, and deliverables.",
+    "deadline": "2023-01-15",
+    "priority": "High"
+  },
+  {
+    "title": "Review Marketing Strategy",
+    "description": "Evaluate the current marketing strategy and propose recommendations for improvement.",
+    "deadline": "2023-02-01",
+    "priority": "Medium"
+  },
+  {
+    "title": "Conduct Market Research",
+    "description": "Gather data on market trends, customer preferences, and competitor activities for the upcoming product launch.",
+    "deadline": "2023-01-30",
+    "priority": "High"
+  },
+  {
+    "title": "Prepare Financial Report",
+    "description": "Compile financial statements and analysis for the quarterly report to stakeholders.",
+    "deadline": "2023-02-15",
+    "priority": "Medium"
+  },
+  {
+    "title": "Organize Team Building Event",
+    "description": "Plan and coordinate a team-building event to enhance team collaboration and morale.",
+    "deadline": "2023-02-28",
+    "priority": "Low"
+}
+]

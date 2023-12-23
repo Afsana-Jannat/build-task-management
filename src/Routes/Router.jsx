@@ -4,7 +4,11 @@ import {
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../Login/Login";
-import Register from "../Login/Register";
+import SignUp from "../pages/SignUp/SignUp";
+import NewTasks from "../pages/NewTasks/NewTasks";
+import Alltasks from "../pages/AllTask/AllTasks";
+import Dashboard from "../Layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,8 +25,27 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/signup',
-                element: <Register></Register>
+                element: <SignUp></SignUp>
             }
+
         ]
     },
+    {
+
+        path: 'dashboard',
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Alltasks></Alltasks>
+            },
+            {
+                path: '/dashboard/newtask',
+                element: <NewTasks></NewTasks>
+            }
+        ]
+
+    }
 ]);

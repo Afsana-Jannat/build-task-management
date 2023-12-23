@@ -1,15 +1,32 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/newtask">New Task</Link></li>
+        <li><Link to="/dashboard">Dashborad</Link></li>
+        {
+            user ? <>
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+            </> :
+                <> <li><Link to="/login">Login</Link></li>
+                </>
+        }
     </>
     return (
         <>
-            <div className="navbar bg-base-100" style={{ backgroundImage: 'url(https://i.ibb.co/gPHC3T1/psychedelic-paper-shapes-with-copy-space-23-2149378246.jpg)' }}>
+            <div className="navbar bg-base-100 text-black font-bold"
+                style={{ backgroundImage: 'url(https://i.ibb.co/gPHC3T1/psychedelic-paper-shapes-with-copy-space-23-2149378246.jpg)' }}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,9 +43,36 @@ const Navbar = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                {/* <div className="navbar-end">
                     <button className="btn text-white glass"><NavLink to="/login">Login</NavLink></button>
-                </div>
+                </div> */}
+                {
+                    user?.email ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-15 rounded-full">
+                                <img src={user?.photoURL} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm 
+dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <button className="btn btn-sm btn-ghost">
+                                    {user?.displayName}
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={logOut}
+                                    className="btn btn-sm btn-ghost">
+                                    Logout
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                        :
+                        <button className="btn text-white glass"><NavLink to="/login">Login</NavLink></button>
+                }
+
             </div>
         </>
     );

@@ -1,11 +1,11 @@
-// import axios from "axios";
+import axios from "axios";
 
-// const axiosPublic = axios.create({
-//     baseURL: 'http://localhost:5173/'
-// })
+const axiosPublic = axios.create({
+    baseURL: 'https://build-task-manserver.vercel.app'
+})
 
-// const useAxiosPublic = () => {
-//     return axiosPublic;
-// };
+const useAxiosPublic = () => {
+    return axiosPublic;
+};
 
-// export default useAxiosPublic;
+export default useAxiosPublic;
